@@ -1,0 +1,34 @@
+﻿@page
+@model Photo_Upload_Core_Web_app.Pages.Photos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Uploaded Photos</h1>
+
+<p>
+    <a class="btn btn-outline-success" asp-page="Create">Upload A Photo </a>
+</p>
+
+        @foreach (var item in Model.Photo)
+        {
+
+
+
+        <div class="card mb-3">
+            <img style="width:100%; height:50vh" src="/uploads/@Html.DisplayFor(modelItem => item.ImageURL)" class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Caption)</h5>
+
+                <p class="card-text"><small class="text-muted">Uploaded By  @Html.DisplayFor(modelItem => item.Uploader.Name)  Email: @Html.DisplayFor(modelItem => item.Uploader.Email) </small></p>
+            </div>
+            <a class="btn btn-outline-success" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+            <a class="btn btn-outline-success" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+            <a class="btn btn-outline-success" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+        </div>
+            
+                   
+              
+        }
+   

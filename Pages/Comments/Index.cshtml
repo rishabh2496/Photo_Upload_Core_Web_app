@@ -1,0 +1,48 @@
+﻿@page
+@model Photo_Upload_Core_Web_app.Pages.Comments.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Comments</h1>
+
+<p>
+    <a class="btn btn-outline-success" asp-page="Create">Add Comment</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment[0].Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment[0].Viewer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment[0].Photo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Comment) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Viewer.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo.Caption)
+            </td>
+            <td>
+                <a class="btn btn-outline-success" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn btn-outline-success" asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a class="btn btn-outline-success" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

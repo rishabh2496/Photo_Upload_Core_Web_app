@@ -1,0 +1,24 @@
+﻿@page
+@model Photo_Upload_Core_Web_app.Pages.Photos.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div>
+    <h4>@Html.DisplayFor(model => model.Photo.Caption)</h4>
+    <hr />
+    
+      
+       
+       <img src="/uploads/@Html.DisplayFor(model => model.Photo.ImageURL)" />
+    
+       <h6>Uploaded by: @Html.DisplayFor(model => model.Photo.Uploader.Name)</h6>
+      
+    
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Photo.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
